@@ -19,6 +19,12 @@ const query = `{
               }
               sectionAPropos {
                 title
+                paragraphe1
+                title1
+                paragraphe2
+                title2
+                paragraphe3
+                title3
                 image {
                   url
                 }
@@ -57,7 +63,7 @@ onMounted(() => {
 });
 
 const animateLoad = (elem) => {
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 900px)").matches) {
         const tl= gsap.timeline();
         tl.set(elem, {x:100, opacity: 0})
         tl.to(elem, {
@@ -69,7 +75,7 @@ const animateLoad = (elem) => {
     }
 }
 const handleTeamScroll = () => {
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 900px)").matches) {
         const tl2 = gsap.timeline({
             ease:'none',
             scrollTrigger: {
@@ -89,13 +95,13 @@ const handleTeamScroll = () => {
         tl2.set('.text-3', {y: "+=50%", opacity:0})
         tl2.to('.img-1', {
             ease: 'none',
-            y:'-=100%',
+            y:'-=250%',
             opacity: 1,
             duration: 0.5,
         });
         tl2.to('.text-1', {
             ease: 'none',
-            y:'-=100%',
+            y:'-=250%',
             opacity: 1,
             duration: 0.5,
         }, '<');
@@ -114,7 +120,7 @@ const handleTeamScroll = () => {
         }, '<');
         tl2.to('.img-2', {
             ease: 'none',
-            y:'-=100%',
+            y:'-=250%',
             opacity: 1,
             duration: 0.5,
         });
@@ -141,17 +147,25 @@ const handleTeamScroll = () => {
 }
 
 const handleScrollAbout =  (elem) => {
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 900px)").matches) {
         const tl = gsap.timeline({
             ease:'none',
             scrollTrigger: {
                 trigger: elem,
                 scrub: 0,
                 start: "center center",
-                end: "+=1000",
+                end: "+=2000",
                 pin: true,
             }
         });
+
+        tl.set('.text-animate-about', {x:-50, y:0, opacity:0})
+        tl.to('.text-animate-about', {
+            y:-50,
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+        },  '<')
 
         gsap.set('.icon-about', {x: "-=500", y: "+=200", opacity: 0})
         tl.to('.icon-about', {
@@ -161,7 +175,7 @@ const handleScrollAbout =  (elem) => {
             opacity: 1,
         }, '<');
 
-        gsap.set('.text-about', {x: "5%", y: "-=100", opacity: 0})
+        gsap.set('.text-about', {x: "0", y: "-=100", opacity: 0})
         tl.to('.text-about', {
             ease: 'none',
             x: 0,
@@ -173,7 +187,7 @@ const handleScrollAbout =  (elem) => {
 
 }
 const handleScroll = (elem) => {
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 900px)").matches) {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: elem,
@@ -184,7 +198,6 @@ const handleScroll = (elem) => {
         });
 
         tl.set('.text-animate', {x:0, y:0, opacity:1})
-        tl.set('.text-animate-about', {x:0, y:0, opacity:0})
         tl.set('.text-animate-label', {x:0, y:0, opacity:1})
 
         tl.to('.text-animate-label', {
@@ -205,13 +218,6 @@ const handleScroll = (elem) => {
             margin: '4%',
             duration: 2
         });
-
-        tl.to('.text-animate-about', {
-            y:-50,
-            x: 50,
-            opacity: 1,
-            duration: 0.9,
-        })
     }
 
 };
@@ -231,31 +237,42 @@ const translateX = ref(100);
                     <h1 class="md:text-5xl text-3xl font-bold text-animate">{{ data?.pageAProposCollection?.items[0].banner.title }}</h1>
                 </div>
             </section>
-            <section class="w-full h-full box-border">
-                <div class="flex h-[70vh] w-full justify-center mx-auto"
+            <section class="w-full h-full box-content overflow-x-hidden">
+                <div class="flex h-[70vh] w-full justify-center"
                 >
                     <div
                         :style="{ backgroundImage: 'url(' + data?.pageAProposCollection?.items[0].backgroundImg?.url + ')' }"
-                        class="w-full bg-center icon bg-fixed" />
+                        class="w-full bg-center icon bg-fixed overflow-x-hidden" />
                 </div>
             </section>
             <section class="h-full w-full mt-20 container-about flex flex-col">
-                <div class="w-full">
-                    <h1 class="md:text-5xl text-3xl font-bold text-animate-about">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}</h1>
-                </div>
-                <div class="flex flex-row gap-10 mx-10">
+                <h1 class="md:text-5xl text-3xl font-bold text-animate-about pl-20 w-max">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}</h1>
+                <div class="flex flex-row gap-10 justify-between w-full pb-24 px-20">
                     <div
                         :style="{ backgroundImage: 'url(' + data?.pageAProposCollection?.items[0].sectionAPropos?.image.url + ')' }"
-                        class="bg-cover p-10 basis-1/2 h-full icon-about w-full md:w-1/2 aspect-square bg-center rounded-xl shadow-2xl" />
+                        class="bg-cover p-10 basis-2/5 h-full icon-about w-full aspect-square bg-center rounded-xl shadow-2xl" />
 
-                    <div class="flex gap-4 h-full basis-1/2 flex-col box-border text-clip text-about rounded-lg aspect-square">
-                        <p class="text-lg font-normal drop-shadow-xl text-start flex items-center">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                    <div class="flex gap-10 h-full basis-2/5 w-[40vw] flex-col justify-start box-border text-clip text-about rounded-lg aspect-square">
+                        <div class="flex-col flex gap-4 w-full">
+                            <label class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title1 }}</label>
+                            <p class="text-md font-normal drop-shadow-xl text-start flex items-center">
+                                {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe1 }}
+                            </p>
+                        </div>
+                        <div class="flex flex-row gap-10 w-full">
+                            <div class="flex-col flex gap-4">
+                                <label class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title2 }}</label>
+                                <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
+                                    {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe2 }}
+                                </p>
+                            </div>
+                            <div class="flex-col flex gap-4">
+                                <label class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title3 }}</label>
+                                <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
+                                    {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe3 }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -282,10 +299,10 @@ const translateX = ref(100);
                             </div>
                         </div>
                     </div>
-                    <div class="relative bg-black/90 basis-1/2 overflow-clip aspect-square bg-center rounded-r-2xl">
-                        <img :src="data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[0].url" alt="" class="absolute inset-0 img-1 h-max w-max my-auto aspect-square p-12 rounded-full">
-                        <img :src="data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[1].url" alt="" class="absolute inset-0 img-2  h-max w-max my-auto aspect-square p-12 rounded-full">
-                        <img :src="data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[2].url" alt="" class="absolute inset-0 img-3  h-max w-max my-auto aspect-square p-12 rounded-full">
+                    <div class="relative bg-black/90 basis-1/2 overflow-clip aspect-square bg-center box-border rounded-r-2xl">
+                        <img :src="data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[0].url" alt="" class="absolute inset-0 img-1 h-max my-auto aspect-square w-1/2 mx-auto rounded-full">
+                        <img :src="data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[1].url" alt="" class="absolute inset-0 img-2  h-max  my-auto aspect-square w-1/2 mx-auto rounded-full">
+                        <img :src="data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[2].url" alt="" class="absolute inset-0 img-3  h-max  my-auto aspect-square w-1/2 mx-auto rounded-full">
                     </div>
                 </div>
             </section>

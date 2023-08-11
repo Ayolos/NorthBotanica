@@ -10,7 +10,7 @@
                     <i class="fa-solid fa-seedling fa-2xl" style="color: #1ae316;"></i>
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">North Botanica</span>
                 </a>
-                <ul class="flex flex-wrap items-center justify-center mb-6 text-sm text-white font-black sm:mb-0 dark:text-gray-400">
+                <ul class="flex flex-wrap items-center justify-center mb-6 text-sm text-white font-normal sm:mb-0 dark:text-gray-400">
                     <li>
                         <a :href="route('about')" class="mr-4 hover:underline md:mr-6 ">A propos</a>
                     </li>

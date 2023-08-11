@@ -28,14 +28,6 @@ const handleTabs = (id) => {
     cards.value[id].isActive = true;
 }
 
-const roundedClass = (index) => {
-    if(index === 0){
-        return 'rounded-tl-xl'
-    }else if(index === cards.value.length - 1){
-        return 'rounded-tr-xl'
-    }
-}
-
 const colorClass = (id) => {
     if(id <= currentTab.value){
         return "bg-green-500"
@@ -54,16 +46,16 @@ const afterCLass = (index) => {
 <template>
     <div class="relative flex flex-col rounded-xl bg-black/5 w-5/6 shadow-md gap-3">
         <div class="flex flex-row items-center justify-center">
-            <button v-for="(card, index) in cards" @click="handleTabs(card.id)" :class="[roundedClass(index) ,card?.isActive ? 'text-green-700 border-b-4 border-green-700' : '']" type="button" class="rounded-sm hover:bg-black/5 py-6 px-2 md:px-4 text-xs md:text-lg font-semibold w-full">{{ card.title }}</button>
+            <button v-for="(card, index) in cards" @click="handleTabs(card.id)" :class="[card?.isActive ? 'text-green-700 border-b-2 border-green-700' : '']" type="button" class="rounded-sm hover:bg-black/5 pt-6 pb-5 px-2 md:px-4 text-xs md:text-lg font-semibold w-max">{{ card.title }}</button>
         </div>
-        <div class="py-12 px-6">
+        <div class="py-24 px-18">
             <div v-for="(card, index) in cards" class="flex flex-row gap-6 justify-center items-center">
-                <div v-if="card.isActive" class="basis-1/4 hidden lg:block">
-                    <img class="w-48 lg:w-32 drop-shadow-2xl bg-green-700 mx-auto rounded-lg p-4 shadow-lg" :src="card?.icon.url" alt="">
+                <div v-if="card.isActive" class="basis-1/4 shadow-lg m-16 hidden lg:block bg-green-700 rounded-lg">
+                    <img class="p-10 w-fit h-fit -rotate-12" :src="card?.icon.url" alt="">
                 </div>
-                <div class="flex flex-col basis-3/4 gap-2">
+                <div class="flex flex-col basis-3/4 gap-2 md:text-start text-start">
                     <div v-if="card?.isActive" class="text-3xl font-black text-green-700">{{ card?.title }}</div>
-                    <div v-if="card?.isActive" class="text-start">{{ card?.description }}</div>
+                    <div v-if="card?.isActive" class="text-start w-full md:w-3/4">{{ card?.description }}</div>
                     <div v-if="card?.id === 2">
                     </div>
                 </div>

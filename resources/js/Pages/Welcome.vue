@@ -3,36 +3,36 @@
         <div class="h-full min-h-screen">
             <div class="h-full w-full flex items-center flex-col gap-24 pb-24" >
                 <div
-                    class="relative flex flex-col gap-12 w-full h-[50vh] bg-black/5 bg-cover lg:bg-contain bg-bottom bg-fixed"
+                    class="relative flex flex-col gap-12 w-full h-[50vh] bg-cover lg:bg-contain bg-bottom bg-fixed"
                      :style="{backgroundImage: 'url(' + data?.accueilCollection?.items[0].image.url + ')'}"
                 >
-                    <div class="absolute inset-0 bg-black/50"></div>
-                    <div class="h-full flex flex-col justify-center gap-8">
-                        <div class="w-full animate">
+                    <div class="z-0 absolute inset-0 bg-black/50"></div>
+                    <div
+                        class="load h-full flex flex-col justify-center gap-8 animateBounce">
+                        <div class="w-full">
                             <h1
-                                v-if="!isLoading"
-                                class="drop-shadow-xl duration-500 ease-in-out drop-shadow-[0_5.2px_5.2px_rgba(0,0,0,0.8)]xl lg:text-5xl text-6xl font-black text-center text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700 py-3 w-3/4 mx-auto">
+                                class="drop-shadow-xl text-4xl md:text-6xls font-black text-center text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700 py-3 w-3/4 mx-auto">
                                 {{ data?.accueilCollection?.items[0].title }}
                             </h1>
                             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"></div>
                         </div>
                         <div
-                            class="flex animate flex-row justify-center gap-8">
+                            class="flex flex-row justify-center gap-8 z-10">
                             <a :href="route('catalogue')"
-                               class="animate-load bg-green-700 rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"
+                               class=" bg-green-700 rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"
                             >
                                 Nos travaux
                                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
                             </a>
-                            <a :href="route('contact')" class="border border-gray-300 hover:scale-[102%] hover:duration-300 hover:ease-in-out bg-gray-100 rounded-full py-3 px-6 text-black inline-flex items-center">
+                            <a :href="route('contact')" class="border border-gray-300 text-sm hover:scale-[102%] hover:duration-300 hover:ease-in-out bg-gray-100 rounded-full py-3 px-6 text-black inline-flex items-center">
                                 Nous contactez
                             </a>
                         </div>
                     </div>
                 </div>
-                <jet-card-more-info v-if="!isLoading" :datat="data?.accueilCollection.items[0].cardHomeCollection.items">
+                <jet-card-more-info class="animateBounce" :datat="data?.accueilCollection.items[0].cardHomeCollection.items">
                 </jet-card-more-info>
             </div>
         </div>
@@ -71,22 +71,19 @@ const query = `{
 const {data, isLoading} = useContentfulFetch(query)
 
 onMounted(() => {
-    animateLoad('.animate')
+    animateLoad('.animateBounce')
 })
 const animateLoad = (elem) => {
-    console.log("Animating element:", elem);
     const tl = gsap.timeline();
     tl.set(elem, { x: -20, y:-20, opacity: 0 });
     tl.to(elem, {
-        x: 0,
-        y: 0,
+        duration: 1,
         ease: 'bounce',
         opacity: 1,
-        duration: 1, // Adjust the duration for testing
-        onComplete: () => {
-            console.log("Animation completed for element:", elem);
-        }
-    });
+        x: 0,
+        y:0,
+    }, '<');
+    tl.play()
 }
 
 </script>

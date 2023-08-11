@@ -84,10 +84,10 @@ const getShows = async () => {
         </template>
         <main class="h-full w-full min-h-screen" @scroll="handleScroll">
             <section ref="snapContainer"
-                     class="w-full pt-48 relative snap-start flex flex-col gap-2 md:gap-24 justify-center items-center">
-                <div class="h-3/4 pb-24 border-b border-gray-300 md:px-10 px-0">
+                     class="w-full pt-24 relative snap-start flex flex-col gap-2 sm:gap-24 justify-center items-center">
+                <div class="h-3/4 w-full pb-24 border-b border-gray-300 sm:px-10 px-0">
                     <div :style="{ opacity, transform: `translateX(${translateX}px)` }"
-                         class="ease-in-out duration-700 flex lg:flex-row flex-col gap-2 md:gap-5 md:w-6/7 w-full h-full p-4 mx-auto overflow-auto">
+                         class="ease-in-out duration-700 flex lg:flex-row flex-col gap-2 sm:gap-5 sm:w-6/7 w-full h-full p-4 mx-auto overflow-auto">
                         <jet-card-post v-for="card in data.cardCollection?.items" :imageSrc="card.imageCard?.url" class="shadow-lg w-full h-full">
                             <template #label>{{ card.label }}</template>
                             <template #title>{{ card.title }}</template>
@@ -105,7 +105,7 @@ const getShows = async () => {
                                     {{ data.section?.label }}
                                 </div>
                                 <div
-                                    class="text-black drop-shadow-lg py-1 font-mono subpixel-antialiased font-black text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
+                                    class="text-black drop-shadow-lg py-1 font-mono subpixel-antialiased font-black text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
                                     {{ data.section?.title }}
                                 </div>
                             </div>

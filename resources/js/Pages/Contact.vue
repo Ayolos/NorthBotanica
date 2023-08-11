@@ -138,17 +138,19 @@ onMounted(() => {
             <section title="form" :style="{ opacity, transform: `translateX(${translateX}px)` }" class="duration-700 ease-in-out lg:h-2/3 h-max rounded-lg shadow-xl w-full lg:w-4/5 lg:m-auto mx-auto bg-white border border-gray-200">
                 <div class="flex lg:flex-row flex-col h-full">
                     <section title="bannerform" class="basis-2/5 rounded-t-lg lg:rounded-r-none lg:rounded-l-lg bg-green-700">
-                        <div class="w-full h-full p-12 flex flex-col gap-8 text-white">
-                            <h1 class="text-xl font-black">Nos coordonnées</h1>
-                            <h1 class="text-lg">Nous vous répondrons par mail le plus rapidement possible</h1>
-                            <div class="flex flex-row gap-3">
-                                <Icon icon="ic:outline-mail" class="text-3xl"></Icon>
-                                <h1 class="text-lg truncate">{{ data.pageContactCollection?.items[0].mail }}</h1>
+                        <div class="w-full h-full p-12 flex flex-col gap-10 text-white">
+                            <h1 class="text-xl font font-semibold">Nos coordonnées</h1>
+                            <h1 class="text-md font-normal text-gray-100">Nous vous répondrons par mail le plus rapidement possible</h1>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex flex-row gap-3">
+                                    <Icon icon="ic:outline-mail" class="text-2xl"></Icon>
+                                    <h1 class="text-md truncate">{{ data.pageContactCollection?.items[0].mail }}</h1>
+                                </div>
+                                <a class="flex flex-row gap-3 text-md gap- hover:underline w-max" v-for="link in data.reseauSocialCollection?.items" :href="link.link">
+                                    <Icon icon="mdi:instagram" class="text-2xl"></Icon>
+                                    {{ link.name }}
+                                </a>
                             </div>
-                            <a class="flex flex-row gap-3" v-for="link in data.reseauSocialCollection?.items" :href="link.link">
-                                <Icon icon="mdi:instagram" class="text-3xl"></Icon>
-                                {{ link.name }}
-                            </a>
                         </div>
                     </section>
                     <form v-if='!page.props?.ziggy?.alert' @submit.prevent="submit" class="w-full h-full basis-3/5 md:p-12 p-6">
