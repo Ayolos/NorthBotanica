@@ -6,7 +6,7 @@
                     class="relative flex flex-col gap-12 w-full h-[50vh] bg-cover lg:bg-contain bg-bottom bg-fixed"
                      :style="{backgroundImage: 'url(' + data?.accueilCollection?.items[0].image.url + ')'}"
                 >
-                    <div class="z-0 absolute inset-0 bg-black/50"></div>
+                    <div v-if="!isLoading" class="z-0 absolute inset-0 bg-black/50"></div>
                     <div
                         class="load h-full flex flex-col justify-center gap-8 animateBounce">
                         <div class="w-full">
@@ -17,6 +17,7 @@
                             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"></div>
                         </div>
                         <div
+                            v-if="!isLoading"
                             class="flex flex-row justify-center gap-8 z-10">
                             <a :href="route('catalogue')"
                                class=" bg-green-700 rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"

@@ -4,7 +4,7 @@
 <template>
 
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 rounded-xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 rounded-xl">
        <slot></slot>
     </div>
 

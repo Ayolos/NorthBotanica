@@ -82,13 +82,13 @@ const getShows = async () => {
         <template #banner-description>
             {{ data.banner?.description }}
         </template>
-        <main class="h-full w-full min-h-screen" @scroll="handleScroll">
-            <section ref="snapContainer"
+        <main class="h-full w-full min-h-screen">
+            <section
                      class="w-full pt-24 relative snap-start flex flex-col gap-2 sm:gap-24 justify-center items-center">
                 <div class="h-3/4 w-full pb-24 border-b border-gray-300 sm:px-10 px-0">
                     <div :style="{ opacity, transform: `translateX(${translateX}px)` }"
-                         class="ease-in-out duration-700 flex lg:flex-row flex-col gap-2 sm:gap-5 sm:w-6/7 w-full h-full p-4 mx-auto overflow-auto">
-                        <jet-card-post v-for="card in data.cardCollection?.items" :imageSrc="card.imageCard?.url" class="shadow-lg w-full h-full">
+                         class="ease-in-out duration-700 items-center flex lg:flex-row flex-col gap-2 sm:gap-5 sm:w-6/7 w-full h-full p-4 mx-auto overflow-auto">
+                        <jet-card-post v-for="card in data.cardCollection?.items" :imageSrc="card.imageCard?.url" class="shadow-lg h-[60vh]">
                             <template #label>{{ card.label }}</template>
                             <template #title>{{ card.title }}</template>
                             <template #description>{{ card.description }}</template>
@@ -96,12 +96,12 @@ const getShows = async () => {
                     </div>
                 </div>
             </section>
-            <section ref="snapContainer" class="w-full h-max relative snap-start pb-24 md:px-10 px-0">
+            <section class="w-full h-max relative snap-start pb-24 md:px-10 px-0">
                 <div class="w-full h-full md:pb-5 md:px-7 px-4 pt-16 pb-4">
                     <div class="flex flex-col gap-12 h-full w-full">
                         <section class="h-1/4" title="banner">
                             <div class="h-full flex flex-col items-start text-start justify-start gap-2 overflow-clip">
-                                <div class="font-semibold drop-shadow-xl text-md lg:text-lg w-full lg:w-2/3">
+                                <div class="font-semibold drop-shadow-xl text-md lg:text-lg w-full lg:w-1/3">
                                     {{ data.section?.label }}
                                 </div>
                                 <div
@@ -112,7 +112,7 @@ const getShows = async () => {
                         </section>
                         <jet-grid>
                             <div
-                                class="hover:transition hover:ease-in-out hover:scale-[102%] relative grid gap-4 h-auto max-w-full rounded-lg aspect-square bg-cover bg-center"
+                                class="hover:transition hover:ease-in-out hover:scale-[102%] relative grid gap-4 h-auto max-w-full rounded-lg aspect-square md:aspect-auto bg-cover bg-center"
                                 v-for="images in data.section?.imagesCollection?.items"
                                 :style="{ backgroundImage: 'url(' + images.url +')' }"
                             >

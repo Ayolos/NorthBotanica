@@ -13,7 +13,7 @@ const props = defineProps({
         <div class="-z-10 absolute inset-0 bg-black/50 rounded-2xl">
 
         </div>
-        <div class="aspect-square p-5 h-full flex flex-col gap-2 drop-shadow-xl">
+        <div class="aspect-square md:aspect-auto p-5 h-full flex flex-col gap-2 drop-shadow-xl">
             <a href="#">
                 <h5 class="text-sm tracking-tight text-white dark:text-white"><slot name="label"></slot></h5>
             </a>
