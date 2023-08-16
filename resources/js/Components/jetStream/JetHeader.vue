@@ -31,7 +31,7 @@ onMounted(() => {
                     </li>
                     <li>
                         <a :class="['catalogue' === route().current() ? 'md:text-green-700 text-green-700' : '']"
-                            :href="route('catalogue')" class="block py-2 pl-3 pr-4 rounded hover:text-gray-400 md:bg-transparent md:p-0">Catalogue</a>
+                            :href="route('catalogue')" class="block py-2 pl-3 pr-4 rounded hover:text-gray-400 md:bg-transparent md:p-0">Services</a>
                     </li>
                     <li>
                         <a :class="['aboutv2' === route().current() ? 'md:text-green-700 text-green-700' : '']"

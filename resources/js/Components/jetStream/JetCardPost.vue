@@ -6,14 +6,14 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="z-0 m-2 relative max-w-full max-h-full button bg-white rounded-2xl md:w-full w-3/4 mx-auto aspect-square md:aspect-auto shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-[102%] hover:transition hover:ease-in">
+    <div class="z-0 m-2 relative max-w-full max-h-full button bg-white rounded-2xl w-full mx-auto aspect-square md:aspect-auto shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-[102%] hover:transition hover:ease-in">
         <a href="#" class="-z-10 absolute inset-0">
             <img class="rounded-2xl h-full w-full" :src="imageSrc" alt="" />
         </a>
         <div class="-z-10 absolute inset-0 bg-black/50 rounded-2xl">
 
         </div>
-        <div class="aspect-square md:aspect-auto p-5 h-full flex flex-col gap-2 drop-shadow-xl">
+        <div class="aspect-square p-5 h-full w-full flex flex-col gap-2 drop-shadow-xl">
             <a href="#">
                 <h5 class="text-sm tracking-tight text-white dark:text-white"><slot name="label"></slot></h5>
             </a>

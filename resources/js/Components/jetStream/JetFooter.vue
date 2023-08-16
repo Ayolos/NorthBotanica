@@ -12,7 +12,7 @@
                 </a>
                 <ul class="flex flex-wrap items-center justify-center mb-6 text-sm text-white font-normal sm:mb-0 dark:text-gray-400">
                 <li>
-                        <a :href="route('about')" class="mr-4 hover:underline md:mr-6 ">A propos</a>
+                        <a :href="route('aboutv2')" class="mr-4 hover:underline md:mr-6 ">A propos</a>
                     </li>
                     <li>
                         <a :href="route('contact')" class="hover:underline">Contact</a>

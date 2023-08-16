@@ -3,23 +3,13 @@
 import NorthBotanicaLayout from "@/Layouts/NorthBotanicaLayout.vue";
 import JetGrid from "@/Components/jetStream/JetGrid.vue";
 import JetCardPost from "@/Components/jetStream/JetCardPost.vue";
-import {onMounted, ref} from "vue";
+import {useContentfulFetch} from "@/Composable/fetchContentfullApi.js";
 
-const data = ref([])
-const loading = ref(true)
-const opacity = ref(0);
-const translateX = ref(100);
-
-onMounted(() => {
-    getShows()
-});
-
-const activeTab = ref('0')
-const getShows = async () => {
-    const query = `{
+const query = `{
         pageCatalogueCollection {
             items {
               banner {
+                label
                 title
                 description
               }
@@ -45,50 +35,32 @@ const getShows = async () => {
         }
     }`;
 
-    const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${import.meta.env.VITE_CONTENTFUL_SPACE_ID}`;
-    const fetchOptions = {
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            query
 
-        })
-    };
-
-    try {
-        const response = await fetch(fetchUrl, fetchOptions).then(response => response.json());
-        data.value = response.data?.pageCatalogueCollection?.items[0]
-        loading.value = false
-        setTimeout(() => {
-            opacity.value = 1;
-            translateX.value = 0;
-        }, 150)
-    } catch (error) {
-        throw new Error("Could not receive the data from Contentful!");
-    }
-};
+const {data, isLoading, error} = useContentfulFetch(query)
 
 </script>
 
 
 <template>
     <NorthBotanicaLayout>
+        <template #banner-label>
+            {{ data?.pageCatalogueCollection?.items[0].banner?.label }}
+        </template>
         <template #banner-name>
-            {{ data.banner?.title }}
+            {{ data?.pageCatalogueCollection?.items[0].banner?.title }}
         </template>
         <template #banner-description>
-            {{ data.banner?.description }}
+            {{ data?.pageCatalogueCollection?.items[0].banner?.description }}
         </template>
         <main class="h-full w-full min-h-screen">
+
             <section
-                     class="w-full pt-24 relative snap-start flex flex-col gap-2 sm:gap-24 justify-center items-center">
+                class="w-full pt-24 relative flex flex-col gap-2 sm:gap-24 justify-center items-center">
                 <div class="h-3/4 w-full pb-24 border-b border-gray-300 sm:px-10 px-0">
-                    <div :style="{ opacity, transform: `translateX(${translateX}px)` }"
-                         class="ease-in-out duration-700 items-center flex lg:flex-row flex-col gap-2 sm:gap-5 sm:w-6/7 w-full h-full p-4 mx-auto overflow-auto">
-                        <jet-card-post v-for="card in data.cardCollection?.items" :imageSrc="card.imageCard?.url" class="shadow-lg h-[60vh]">
+                    <div
+                        class="ease-in-out duration-700 items-center flex lg:flex-row flex-col gap-2 sm:gap-5 w-full h-full p-4 mx-auto overflow-auto">
+                        <jet-card-post v-for="card in data?.pageCatalogueCollection?.items[0].cardCollection?.items"
+                                       :imageSrc="card.imageCard?.url" class="shadow-lg h-[60vh]">
                             <template #label>{{ card.label }}</template>
                             <template #title>{{ card.title }}</template>
                             <template #description>{{ card.description }}</template>
@@ -96,25 +68,25 @@ const getShows = async () => {
                     </div>
                 </div>
             </section>
-            <section class="w-full h-max relative snap-start pb-24 md:px-10 px-0">
+            <section class="w-full h-max relative pb-24 px-0">
                 <div class="w-full h-full md:pb-5 md:px-7 px-4 pt-16 pb-4">
                     <div class="flex flex-col gap-12 h-full w-full">
                         <section class="h-1/4" title="banner">
                             <div class="h-full flex flex-col items-start text-start justify-start gap-2 overflow-clip">
                                 <div class="font-semibold drop-shadow-xl text-md lg:text-lg w-full lg:w-1/3">
-                                    {{ data.section?.label }}
+                                    {{ data?.pageCatalogueCollection?.items[0].section?.label }}
                                 </div>
                                 <div
                                     class="text-black drop-shadow-lg py-1 font-mono subpixel-antialiased font-black text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
-                                    {{ data.section?.title }}
+                                    {{ data?.pageCatalogueCollection?.items[0].section?.title }}
                                 </div>
                             </div>
                         </section>
                         <jet-grid>
                             <div
-                                class="hover:transition hover:ease-in-out hover:scale-[102%] relative grid gap-4 h-auto max-w-full rounded-lg aspect-square md:aspect-auto bg-cover bg-center"
-                                v-for="images in data.section?.imagesCollection?.items"
+                                v-for="images in data?.pageCatalogueCollection?.items[0].section?.imagesCollection?.items"
                                 :style="{ backgroundImage: 'url(' + images.url +')' }"
+                                class="h-full w-full hover:transition hover:ease-in-out hover:scale-[102%] relative grid gap-4 h-auto max-w-full rounded-lg aspect-square bg-cover bg-center"
                             >
                                 <div class="absolute inset-0 bg-black/30 rounded-lg"></div>
                             </div>

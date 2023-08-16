@@ -25,16 +25,23 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/catalogue', function () {
-    return Inertia::render('Catalogue', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+Route::get('/services', function () {
+    return Inertia::render('Catalogue/CatalogueHome', [
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
 })->name('catalogue');
 
-Route::get('/aboutv2', function () {
+Route::get('/services/servicesPro', function () {
+    return Inertia::render('Catalogue/CataloguePro');
+})->name('catalogue.pro');
+
+Route::get('/services/servicesCustomer', function () {
+    return Inertia::render('Catalogue/CatalogueCustomer');
+})->name('catalogue.customer');
+
+
+Route::get('/about', function () {
     return Inertia::render('Aboutv2', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -42,15 +49,6 @@ Route::get('/aboutv2', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 })->name('aboutv2');
-
-Route::get('/about', function () {
-    return Inertia::render('About', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('about');
 
 
 Route::post('/contact/send', [MailController::class, 'sendMessageGoogle'])->name('contact.send');

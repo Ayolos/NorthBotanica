@@ -22,7 +22,7 @@ export function useContentfulFetch(query) {
 
         try {
             const response = await fetch(fetchUrl, fetchOptions).then((response) => response.json());
-            data.value = response?.data;
+            data.value = response?.data ? response?.data : undefined
         } catch (e) {
             error.value = e;
         } finally {
@@ -30,8 +30,8 @@ export function useContentfulFetch(query) {
         }
     };
 
-    onMounted(() => {
-        fetchData()
+    onMounted(async () => {
+        await fetchData().then(r => r)
 
     })
 
