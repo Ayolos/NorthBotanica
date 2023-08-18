@@ -1,6 +1,9 @@
 <script setup>
 
-import {useSlots} from "vue";
+import {onMounted, useSlots} from "vue";
+import {useContentfulFetch} from "@/Composable/fetchContentfullApi.js";
+import {gsap} from "gsap";
+import logger from "@fortawesome/vue-fontawesome/src/logger.js";
 
 const slots = useSlots();
 

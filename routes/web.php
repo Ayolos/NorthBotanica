@@ -50,7 +50,6 @@ Route::get('/about', function () {
     ]);
 })->name('aboutv2');
 
-
 Route::post('/contact/send', [MailController::class, 'sendMessageGoogle'])->name('contact.send');
 Route::get('/contact', [MailController::class, 'formMessageGoogle'])->name('contact');
 

@@ -14,6 +14,15 @@
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GV5FLYNHQ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-2GV5FLYNHQ');
+        </script>
+
 
         @routes
         @vite(['resources/js/app.js',"resources/js/Pages/{$page['component']}.vue"])
