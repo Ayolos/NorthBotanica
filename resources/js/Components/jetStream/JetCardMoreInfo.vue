@@ -1,5 +1,5 @@
 <script setup>
-import {computed, nextTick, onMounted, ref, watch} from 'vue'
+import {onMounted, ref, watch} from 'vue'
 
 const props = defineProps({
     datat: Object
@@ -46,16 +46,16 @@ const afterCLass = (index) => {
 <template>
     <div class="relative flex flex-col rounded-xl bg-black/5 w-5/6 shadow-md gap-3">
         <div class="flex flex-row items-center justify-center">
-            <button v-for="(card, index) in cards" @click="handleTabs(card.id)" :class="[card?.isActive ? 'text-green-700 border-b-2 border-green-700' : '']" type="button" class="rounded-sm hover:bg-black/5 pt-6 pb-5 px-2 md:px-4 text-xs md:text-lg font-semibold w-max">{{ card.title }}</button>
+            <button v-for="(card) in cards" @click="handleTabs(card.id)" :class="[card?.isActive ? 'text-green-700 border-b-2 border-green-700' : '']" type="button" class="rounded-sm hover:bg-black/5 pt-6 pb-5 px-2 md:px-4 text-xs md:text-lg font-semibold w-max">{{ card.title }}</button>
         </div>
         <div class="py-24 px-18">
-            <div v-for="(card, index) in cards" class="flex flex-row gap-6 justify-center items-center">
+            <div v-for="(card) in cards" class="flex flex-row gap-6 justify-center items-center">
                 <div v-if="card.isActive" class="basis-1/4 shadow-lg m-16 hidden lg:block bg-green-700 rounded-lg">
                     <img class="p-10 w-fit h-fit -rotate-12" :src="card?.icon.url" alt="">
                 </div>
                 <div class="flex flex-col basis-3/4 gap-2 md:text-start text-start">
-                    <div v-if="card?.isActive" class="text-3xl font-black text-green-700">{{ card?.title }}</div>
-                    <div v-if="card?.isActive" class="text-start w-full md:w-3/4">{{ card?.description }}</div>
+                    <h3 v-if="card?.isActive" class="text-3xl font-black text-green-700">{{ card?.title }}</h3>
+                    <p v-if="card?.isActive" class="text-start w-full md:w-3/4">{{ card?.description }}</p>
                     <div v-if="card?.id === 2">
                     </div>
                 </div>

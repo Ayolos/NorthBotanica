@@ -2,7 +2,7 @@
 
 import NorthBotanicaLayout from "@/Layouts/NorthBotanicaLayout.vue";
 import {onMounted, reactive, ref} from "vue";
-import {router, usePage} from "@inertiajs/vue3";
+import {Head, router, usePage} from "@inertiajs/vue3";
 import {Icon} from "@iconify/vue";
 
 onMounted(() => {
@@ -125,19 +125,27 @@ onMounted(() => {
 </script>
 
 <template>
+    <Head>
+        <title>{{ data.pageContactCollection?.items[0].banner.title }}</title>
+        <meta name="description" :content="data.pageContactCollection?.items[0].banner.description">
+
+        <template v-for="link in data.reseauSocialCollection?.items">
+            <meta :property="'og:' + link.name" :content="link.name + ': ' +link.link">
+        </template>
+    </Head>
     <NorthBotanicaLayout class="h-max gap-10">
         <div class="fixed -z-10 inset-0"></div>
         <div class="flex flex-col gap-24 pb-24 pt-48">
             <section class="h-1/4" title="banner">
                 <div :style="{ opacity, transform: `translateX(${translateX}px)` }"
                      class="duration-500 ease-in-out h-full flex flex-col items-center text-center justify-center gap-5 sm:px-20 px-5 overflow-clip border-b border-gray-300 pb-24">
-                    <div
+                    <h1
                         class="text-black drop-shadow-xl font-mono subpixel-antialiased font-black text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
                         {{ data.pageContactCollection?.items[0].banner.title }}
-                    </div>
-                    <div class="text-gray-500 font-medium drop-shadow-xl text-md lg:text-lg mx-auto w-full lg:w-1/2">
+                    </h1>
+                    <p class="text-gray-500 font-medium drop-shadow-xl text-md lg:text-lg mx-auto w-full lg:w-1/2">
                         {{ data.pageContactCollection?.items[0].banner.description }}
-                    </div>
+                    </p>
                 </div>
             </section>
             <div class="p-5">
@@ -147,14 +155,14 @@ onMounted(() => {
                         <section class="basis-2/5 rounded-t-lg lg:rounded-r-none lg:rounded-l-lg bg-green-700"
                                  title="bannerform">
                             <div class="w-full h-full p-12 flex flex-col gap-10 text-white">
-                                <h1 class="text-xl font font-semibold">Nos coordonnées</h1>
-                                <h1 class="text-md font-normal text-gray-100">Nous vous répondrons par mail le plus
-                                    rapidement possible</h1>
+                                <p class="text-xl font font-semibold">Nos coordonnées</p>
+                                <p class="text-md font-normal text-gray-100">Nous vous répondrons par mail le plus
+                                    rapidement possible</p>
                                 <div class="flex flex-col gap-3">
                                     <div class="flex flex-row gap-3">
                                         <Icon class="text-2xl" icon="ic:outline-mail"></Icon>
-                                        <h1 class="text-md truncate">{{ data.pageContactCollection?.items[0].mail
-                                            }}</h1>
+                                        <span class="text-md truncate">{{ data.pageContactCollection?.items[0].mail
+                                            }}</span>
                                     </div>
                                     <a v-for="link in data.reseauSocialCollection?.items"
                                        :href="link.link" class="flex flex-row gap-3 text-md gap- hover:underline w-max">

@@ -16,11 +16,14 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    $metaDescription = "Hello test description";
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'metaDescription' => $metaDescription,
     ]);
 })->name('home');
 

@@ -4,6 +4,7 @@ import NorthBotanicaLayout from "@/Layouts/NorthBotanicaLayout.vue";
 import JetGrid from "@/Components/jetStream/JetGrid.vue";
 import JetCardPost from "@/Components/jetStream/JetCardPost.vue";
 import {useContentfulFetch} from "@/Composable/fetchContentfullApi.js";
+import {Head} from "@inertiajs/vue3";
 
 const query = `{
         pageCatalogueProCollection {
@@ -42,6 +43,10 @@ const {data, isLoading, error} = useContentfulFetch(query)
 
 
 <template>
+    <Head>
+        <title>{{ data?.pageCatalogueProCollection?.items[0].banner?.title }}</title>
+        <meta name="description" :content="data?.pageCatalogueProCollection?.items[0].banner?.description">
+    </Head>
     <NorthBotanicaLayout>
         <template #banner-label>
             {{ data?.pageCatalogueProCollection?.items[0].banner?.label }}

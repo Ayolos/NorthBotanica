@@ -3,6 +3,7 @@
 import JetHeader from "@/Components/jetStream/JetHeader.vue";
 import JetFooter from "@/Components/jetStream/JetFooter.vue";
 import JetBanner from "@/Components/jetStream/JetBanner.vue";
+
 </script>
 
 <template>
@@ -21,9 +22,9 @@ import JetBanner from "@/Components/jetStream/JetBanner.vue";
                 <slot name="banner-description"/>
             </template>
         </jet-banner>
-        <div class="h-full w-full">
+        <main class="h-full w-full">
             <slot/>
-        </div>
+        </main>
         <jet-footer></jet-footer>
     </div>
 </template>

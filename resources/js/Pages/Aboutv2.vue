@@ -5,6 +5,7 @@ import {useContentfulFetch} from "@/Composable/fetchContentfullApi.js";
 import {computed, onMounted, ref} from "vue";
 import {gsap} from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {Head} from "@inertiajs/vue3";
 
 
 const query = `{
@@ -226,12 +227,14 @@ const isTransition = computed(() => {
     return window.matchMedia("(min-width: 768px)").matches
 })
 
-const opacity = ref(0);
-const translateX = ref(100);
-
+const opacity = ref(0)
 </script>
 
 <template>
+    <Head>
+        <title>{{ data?.pageAProposCollection?.items[0].banner.title }}</title>
+        <meta name="description" content="Découvrez La mission de North Botanica. Nous sommes dédiés à fournir des produits botaniques de qualité supérieure pour promouvoir le bien-être naturel. Apprenez-en plus sur notre équipe passionnée et notre engagement envers la durabilité.">
+    </Head>
     <NorthBotanicaLayout>
         <div class="wrapper-scroll w-full">
             <section class="h-[100vh] w-full">
@@ -250,7 +253,7 @@ const translateX = ref(100);
                 </div>
             </section>
             <section class="h-full w-full mt-20 gap-10 container-about flex flex-col">
-                <h1 class="md:text-5xl text-3xl font-bold text-animate-about pl-8 md:pl-20 w-max">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}</h1>
+                <h2 class="md:text-5xl text-3xl font-bold text-animate-about pl-8 md:pl-20 w-max">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}</h2>
                 <div class="flex flex-row gap-20 lg:justify-center w-full lg:pb-24 px-8 md:px-20">
                     <div
                         :style="{ backgroundImage: 'url(' + data?.pageAProposCollection?.items[0].sectionAPropos?.image.url + ')' }"
@@ -258,20 +261,20 @@ const translateX = ref(100);
 
                     <div class="flex gap-10 h-full basis-full lg:basis-2/5 lg:w-[40vw] flex-col justify-start box-border text-clip text-about rounded-lg aspect-square">
                         <div class="flex-col flex gap-4 w-full pt-10">
-                            <label class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title1 }}</label>
+                            <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title1 }}</h4>
                             <p class="text-md font-normal drop-shadow-xl text-start flex items-center">
                                 {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe1 }}
                             </p>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-10 w-full">
                             <div class="flex-col flex gap-4">
-                                <label class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title2 }}</label>
+                                <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title2 }}</h4>
                                 <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
                                     {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe2 }}
                                 </p>
                             </div>
                             <div class="flex-col flex gap-4">
-                                <label class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title3 }}</label>
+                                <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title3 }}</h4>
                                 <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
                                     {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe3 }}
                                 </p>
@@ -282,7 +285,7 @@ const translateX = ref(100);
             </section>
             <section class="relative bg-gray-200/50 h-screen flex items-center flex-col justify-center w-full md:mt-48 mt-20 container-team">
                 <div class="w-max mx-auto mb-5">
-                    <h1 class="md:text-4xl text-3xl font-semibold">{{ data?.pageAProposCollection?.items[0].sectionExpert?.title }}</h1>
+                    <h2 class="md:text-4xl text-3xl font-semibold">{{ data?.pageAProposCollection?.items[0].sectionExpert?.title }}</h2>
                 </div>
                 <div
                     v-if="isTransition"
@@ -292,16 +295,16 @@ const translateX = ref(100);
                         <div class="relative xl:w-1/2 w-3/4 h-full overflow-clip mx-auto">
                             <div
                                 class="absolute inset-0 text-1 h-full w-max flex flex-col gap-1 justify-center">
-                                <h1 class="text-2xl font-bold text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[0].title }}</h1>
-                                <h3 class="text-lg text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[0].description }}</h3>
+                                <p class="text-2xl font-bold text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[0].title }}</p>
+                                <p class="text-lg text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[0].description }}</p>
                             </div>
                             <div class="absolute inset-0 text-2 h-full w-max flex flex-col gap-1 justify-center">
-                                <h1 class="text-2xl font-bold text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[1].title }}</h1>
-                                <h3 class="text-lg text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[1].description }}</h3>
+                                <p class="text-2xl font-bold text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[1].title }}</p>
+                                <p class="text-lg text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[1].description }}</p>
                             </div>
                             <div class="absolute inset-0 text-3 h-full w-max flex flex-col gap-1 justify-center">
-                                <h1 class="text-2xl font-bold text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[2].title }}</h1>
-                                <h3 class="text-lg text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[2].description }}</h3>
+                                <p class="text-2xl font-bold text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[2].title }}</p>
+                                <p class="text-lg text-justify">{{ data?.pageAProposCollection?.items[0].sectionExpert?.imagesCollection?.items[2].description }}</p>
                             </div>
                         </div>
                     </div>
@@ -320,8 +323,8 @@ const translateX = ref(100);
                         <div class="flex flex-row w-full">
                             <div class="bg-white rounded-l-xl basis-1/2">
                                 <div class="flex flex-col gap-2 h-full justify-center mx-10">
-                                    <h1 class="font-black text-lg"> {{ expert.title }}</h1>
-                                    <h3 class="text-md">{{ expert.description }}</h3>
+                                    <p class="font-black text-lg"> {{ expert.title }}</p>
+                                    <p class="text-md">{{ expert.description }}</p>
                                 </div>
                             </div>
                             <div class="bg-black/90 basis-1/2 rounded-r-xl flex justify-center">
@@ -333,7 +336,7 @@ const translateX = ref(100);
             </section>
             <section class="h-full w-full flex items-center">
                 <div class="w-[80vw] h-full my-48 mx-auto flex flex-col justify-center gap-24">
-                    <h1 class="md:text-5xl text-4xl md:w-1/2 mx-auto text-center font-semibold drop-shadow-md">{{ data?.pageAProposCollection?.items[0].sectionNosValeurs?.title }}</h1>
+                    <h2 class="md:text-5xl text-4xl md:w-1/2 mx-auto text-center font-semibold drop-shadow-md">{{ data?.pageAProposCollection?.items[0].sectionNosValeurs?.title }}</h2>
                     <div
                         class="grid md:grid-cols-2 grid-cols-1 md:text-start text-center grid-rows-2 gap-10 justify-center md:w-[60vw] w-[80vw] mx-auto items-start">
                         <p class=""> {{ data?.pageAProposCollection?.items[0].sectionNosValeurs?.paragraphe1}}</p>
@@ -348,11 +351,4 @@ const translateX = ref(100);
 </template>
 
 <style>
-.no-scrollbar {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-}
-.no-scrollbar::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
-}
 </style>

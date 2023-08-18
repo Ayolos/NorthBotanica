@@ -27,6 +27,7 @@
         "flowbite-vue": "^0.0.17-next.0",
         "gsap": "file:gsap-bonus.tgz",
         "scrollmagic": "^2.0.8",
+        "vue-router": "^4.2.4",
         "vue-scrollmagic": "^1.2.0"
     }
 }

@@ -1,4 +1,8 @@
 <template>
+    <Head>
+        <title>{{ data?.accueilCollection?.items[0].title }}</title>
+        <meta name="description" :content="data?.accueilCollection?.items[0].title">
+    </Head>
     <NorthBotanicaLayout>
         <div class="h-full min-h-screen">
             <div class="h-full w-full flex items-center flex-col gap-24 pb-24" >
@@ -42,10 +46,11 @@
 
 <script setup>
 import NorthBotanicaLayout from "@/Layouts/NorthBotanicaLayout.vue";
-import {onMounted, ref, watch} from "vue";
+import {onMounted} from "vue";
 import JetCardMoreInfo from "@/Components/jetStream/JetCardMoreInfo.vue";
 import {useContentfulFetch} from "@/Composable/fetchContentfullApi.js";
 import {gsap} from "gsap";
+import {Head} from "@inertiajs/vue3";
 
 const { props } = defineProps(["canLogin", "canRegister", "laravelVersion", "phpVersion", "analyticsData"]);
 
@@ -91,29 +96,4 @@ const animateLoad = (elem) => {
 </script>
 
 <style>
-.bg-dots-darker {
-    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
-}
-
-@media (prefers-color-scheme: dark) {
-    .dark\:bg-dots-lighter {
-        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-    }
-}
-
-.slide-fade-enter-active {
-    transition: all 0.3s ease;
-}
-
-.slide-fade-leave-active {
-    transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter,
-.slide-fade-leave-to
-    /* .slide-fade-leave-active below version 2.1.8 */
-{
-    transform: translateX(10px);
-    opacity: 1;
-}
 </style>
