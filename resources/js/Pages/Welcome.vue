@@ -47,7 +47,7 @@ import JetCardMoreInfo from "@/Components/jetStream/JetCardMoreInfo.vue";
 import {useContentfulFetch} from "@/Composable/fetchContentfullApi.js";
 import {gsap} from "gsap";
 
-const { props } = defineProps(["canLogin", "canRegister", "laravelVersion", "phpVersion"]);
+const { props } = defineProps(["canLogin", "canRegister", "laravelVersion", "phpVersion", "analyticsData"]);
 
 const query = `{
     accueilCollection{
@@ -72,6 +72,7 @@ const query = `{
 const {data, isLoading} = useContentfulFetch(query)
 
 onMounted(() => {
+    console.log(props)
     animateLoad('.animateBounce')
 })
 const animateLoad = (elem) => {
