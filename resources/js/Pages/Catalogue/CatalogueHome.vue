@@ -34,7 +34,6 @@ const query = `{
 
 const {data, isLoading, error} = useContentfulFetch(query)
 const animateLoad = (elem, initXPosition, initYPosition) => {
-    console.log(elem)
     const tl = gsap.timeline();
     tl.set(elem, { x: initXPosition, y:initYPosition, opacity: 0 });
     tl.to(elem, {
@@ -48,7 +47,6 @@ const animateLoad = (elem, initXPosition, initYPosition) => {
 }
 
 onMounted( () => {
-    console.log("hello")
     animateLoad(".animate-left", -50, -20)
 })
 </script>

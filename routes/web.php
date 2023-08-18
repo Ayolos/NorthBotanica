@@ -4,8 +4,6 @@ use App\Http\Controllers\MailController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Spatie\Analytics\Facades\Analytics;
-use Spatie\Analytics\Period;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,14 +16,11 @@ use Spatie\Analytics\Period;
 */
 
 Route::get('/', function () {
-    dd(Analytics::fetchVisitorsAndPageViews(Period::days(7)));
-    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-        'analyticsData' => $analyticsData,
     ]);
 })->name('home');
 
