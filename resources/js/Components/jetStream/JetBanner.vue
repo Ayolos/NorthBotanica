@@ -20,7 +20,7 @@ const slotsClass = () => {
             <label class="w-full text-lg md:text-2xl font-bold">
                 <slot name="label"/>
             </label>
-            <h1 class="w-full text-3xl md:text-4xl font-bold pb-4 drop-shadow-xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
+            <h1 class="w-full text-3xl md:text-4xl font-bold pb-4 drop-shadow-xl text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen">
                 <slot name="title"/>
             </h1>
             <p class="w-full text-md md:text-lg text-gray-400">

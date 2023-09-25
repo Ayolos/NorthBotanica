@@ -18,10 +18,11 @@ export default {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
                 mono: ['Poppins'],
-                colors: {
-                    beautyGreen: '#22780f'
-                }
             },
+            colors: {
+                darkGreen: '#64B66F',
+                clearGreen: '#A0C058'
+            }
         },
     },
 

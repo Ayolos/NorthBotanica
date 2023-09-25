@@ -1,6 +1,7 @@
 <script setup>
 import { initFlowbite } from 'flowbite'
 import {onMounted} from "vue";
+import logo from "/public/storage/logo.png"
 
 onMounted(() => {
     initFlowbite();
@@ -9,10 +10,10 @@ onMounted(() => {
 
 <template>
 
-    <nav class="z-50 bg-gray-200/30 dark:bg-gray-900 w-full top-0 left-0 ">
+    <nav class="z-50 bg-gray-100 dark:bg-gray-900 w-full top-0 left-0 sticky">
         <div class="max-w-screen-xl flex flex-wrap items-center md:justify-around justify-between gap-8 mx-auto p-3">
             <a :href="route('home')" class="flex items-center w-max gap-2">
-                <i class="fa-solid fa-seedling fa-xl" style="color: #1ae316;"></i>
+                <img :src="logo" alt="Image" class="w-10"/>
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">North Botanica</span>
             </a>
             <button
@@ -26,19 +27,19 @@ onMounted(() => {
                 <ul class="flex md:text-sm text-2xl text-center flex-col md:gap-4 gap-2 p-2 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                     <li>
                         <a
-                            :class="['home' === route().current() ? 'md:text-green-700 text-green-700' : '']"
+                            :class="['home' === route().current() ? 'md:text-darkGreen text-darkGreen' : '']"
                             :href="route('home')" class="block py-2 pl-3 pr-4 rounded hover:text-gray-400 md:bg-transparent md:p-0">Accueil</a>
                     </li>
                     <li>
-                        <a :class="['catalogue' === route().current() ? 'md:text-green-700 text-green-700' : '']"
+                        <a :class="['catalogue' === route().current() ? 'md:text-darkGreen text-darkGreen' : '']"
                             :href="route('catalogue')" class="block py-2 pl-3 pr-4 rounded hover:text-gray-400 md:bg-transparent md:p-0">Services</a>
                     </li>
                     <li>
-                        <a :class="['aboutv2' === route().current() ? 'md:text-green-700 text-green-700' : '']"
+                        <a :class="['aboutv2' === route().current() ? 'md:text-darkGreen text-darkGreen' : '']"
                            :href="route('aboutv2')" class="block py-2 pl-3 pr-4 rounded hover:text-gray-400 md:bg-transparent md:p-0">A Propos</a>
                     </li>
                     <li>
-                        <a :class="['contact' === route().current() ? 'md:text-green-700 text-green-700' : '']"
+                        <a :class="['contact' === route().current() ? 'md:text-darkGreen text-darkGreen' : '']"
                             :href="route('contact')" class="block py-2 pl-3 pr-4 rounded hover:text-gray-400 md:bg-transparent md:p-0">Contact</a>
                     </li>
                 </ul>

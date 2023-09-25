@@ -7,7 +7,7 @@
         <div class="h-full min-h-screen">
             <div class="h-full w-full flex items-center flex-col gap-24 pb-24" >
                 <div
-                    class="relative flex flex-col gap-12 w-full h-[50vh] bg-cover lg:bg-contain bg-bottom bg-fixed"
+                    class="relative flex flex-col gap-12 w-full h-[50vh] bg-cover lg:bg-contain bg-bottom bg-fixed backdrop-blur-xl"
                      :style="{backgroundImage: 'url(' + data?.accueilCollection?.items[0].image.url + ')'}"
                 >
                     <div v-if="!isLoading" class="z-0 absolute inset-0 bg-black/50"></div>
@@ -15,7 +15,7 @@
                         class="load h-full flex flex-col justify-center gap-8 animateBounce">
                         <div class="w-full">
                             <h1
-                                class="drop-shadow-xl text-4xl md:text-6xls font-black text-center text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700 py-3 w-3/4 mx-auto">
+                                class="drop-shadow-xl text-4xl md:text-6xls font-black text-center text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen py-3 w-3/4 mx-auto">
                                 {{ data?.accueilCollection?.items[0].title }}
                             </h1>
                             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"></div>
@@ -24,7 +24,7 @@
                             v-if="!isLoading"
                             class="flex flex-row justify-center gap-8 z-10">
                             <a :href="route('catalogue')"
-                               class=" bg-green-700 rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"
+                               class=" bg-darkGreen rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"
                             >
                                 Nos travaux
                                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

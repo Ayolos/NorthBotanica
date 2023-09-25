@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <footer class="bg-green-700 text-white border-top border-green-800">
+    <footer class="bg-darkGreen text-white border-top border-darkGreen">
         <div class="w-full py-8">
             <div class="sm:flex sm:items-center sm:justify-between md:px-16 px-12 mx-auto">
                 <a :href="route('home')" class="flex mx-auto sm:mx-0 items-center w-max gap-2">

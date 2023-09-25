@@ -155,7 +155,7 @@ const handleScrollAbout =  (elem) => {
                 trigger: elem,
                 scrub: 0,
                 start: "center center",
-                end: "+=2000",
+                end: "+=1000",
                 pin: true,
             }
         });

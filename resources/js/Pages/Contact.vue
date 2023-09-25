@@ -140,7 +140,7 @@ onMounted(() => {
                 <div :style="{ opacity, transform: `translateX(${translateX}px)` }"
                      class="duration-500 ease-in-out h-full flex flex-col items-center text-center justify-center gap-5 sm:px-20 px-5 overflow-clip border-b border-gray-300 pb-24">
                     <h1
-                        class="text-black drop-shadow-xl font-mono subpixel-antialiased font-black text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
+                        class="text-black drop-shadow-xl font-mono subpixel-antialiased font-black text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen">
                         {{ data.pageContactCollection?.items[0].banner.title }}
                     </h1>
                     <p class="text-gray-500 font-medium drop-shadow-xl text-md lg:text-lg mx-auto w-full lg:w-1/2">
@@ -152,7 +152,7 @@ onMounted(() => {
                 <section :style="{ opacity, transform: `translateX(${translateX}px)` }" class="duration-700 ease-in-out lg:h-2/3 h-max rounded-lg shadow-xl w-full lg:w-4/5 lg:m-auto mx-auto bg-white border border-gray-200"
                          title="form">
                     <div class="flex lg:flex-row flex-col h-full">
-                        <section class="basis-2/5 rounded-t-lg lg:rounded-r-none lg:rounded-l-lg bg-green-700"
+                        <section class="basis-2/5 rounded-t-lg lg:rounded-r-none lg:rounded-l-lg bg-darkGreen"
                                  title="bannerform">
                             <div class="w-full h-full p-12 flex flex-col gap-10 text-white">
                                 <p class="text-xl font font-semibold">Nos coordonnées</p>
@@ -165,8 +165,8 @@ onMounted(() => {
                                             }}</span>
                                     </div>
                                     <a v-for="link in data.reseauSocialCollection?.items"
-                                       :href="link.link" class="flex flex-row gap-3 text-md gap- hover:underline w-max">
-                                        <Icon class="text-2xl" icon="mdi:instagram"></Icon>
+                                       :href="link.link" class="flex flex-row gap-3 items-center text-md gap- hover:underline w-max">
+                                        <img :src="link.icon.url" alt="image" class="w-6">
                                         {{ link.name }}
                                     </a>
                                 </div>
@@ -217,7 +217,7 @@ onMounted(() => {
                                       placeholder="Votre message..."
                                       rows="4"></textarea>
                             <div class="flex justify-end mt-8">
-                                <button v-if="isLoader" class="w-max justify-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center" disabled
+                                <button v-if="isLoader" class="w-max justify-center text-white bg-darkGreen hover:bg-clearGreen focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center" disabled
                                         type="button">
                                     <svg aria-hidden="true" class="inline w-4 h-4 mr-3 text-white animate-spin"
                                          fill="none" role="status"
@@ -231,7 +231,7 @@ onMounted(() => {
                                     </svg>
                                     Envoie ...
                                 </button>
-                                <button v-else class="w-max justify-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                                <button v-else class="w-max justify-center text-white bg-darkGreen hover:bg-clearGreen focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
                                         type="submit">
                                     Envoyer
                                 </button>
