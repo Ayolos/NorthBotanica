@@ -7,11 +7,11 @@ import JetBanner from "@/Components/jetStream/JetBanner.vue";
 </script>
 
 <template>
-    <div class="relative z-0 h-full min-h-screen max-h-full">
+    <div class="relative z-0 h-full min-h-screen max-h-full bg-gray-100">
         <jet-header></jet-header>
         <jet-banner
             v-if="$slots['banner-name'] || $slots['banner-description'] || $slots['banner-label']"
-            class="bg-black/5">
+            class="bg-gray-100">
             <template v-if="$slots['banner-name']" #title>
                 <slot name="banner-name"/>
             </template>

@@ -84,6 +84,13 @@ onMounted( () => {
                             {{ data?.pageCatalogueHomeCollection?.items[0].card2?.text }}
                         </template>
                     </jet-card-more>
+                    <jet-card-more :href="route('catalogue.collectivity')"
+                                   :url="data?.pageCatalogueHomeCollection?.items[0].card2?.img.url"
+                    >
+                        <template #title>
+                            Pour les collectivité
+                        </template>
+                    </jet-card-more>
                 </div>
             </jet-section-template>
         </section>

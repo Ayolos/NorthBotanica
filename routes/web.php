@@ -42,6 +42,10 @@ Route::get('/services/servicesCustomer', function () {
     return Inertia::render('Catalogue/CatalogueCustomer');
 })->name('catalogue.customer');
 
+Route::get('/services/servicesCollectivity', function () {
+    return Inertia::render('Catalogue/CatalogueCollectivity');
+})->name('catalogue.collectivity');
+
 
 Route::get('/about', function () {
     return Inertia::render('Aboutv2', [

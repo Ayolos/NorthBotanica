@@ -12,19 +12,19 @@
                 >
                     <div v-if="!isLoading" class="z-0 absolute inset-0 bg-black/50"></div>
                     <div
-                        class="load h-full flex flex-col justify-center gap-8 animateBounce">
+                        class="load h-full flex flex-col justify-center gap-8 animateBounce md:mx-10 mx-5">
                         <div class="w-full">
                             <h1
-                                class="drop-shadow-xl text-4xl md:text-6xls font-black text-center text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen py-3 w-3/4 mx-auto">
+                                class="drop-shadow-xl text-xl sm:text-4xl md:text-6xls font-black text-center text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen py-3">
                                 {{ data?.accueilCollection?.items[0].title }}
                             </h1>
                             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"></div>
                         </div>
                         <div
                             v-if="!isLoading"
-                            class="flex flex-row justify-center gap-8 z-10">
+                            class="flex flex-row justify-center gap-4 z-10">
                             <a :href="route('catalogue')"
-                               class=" bg-darkGreen rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"
+                               class="bg-darkGreen rounded-full py-3 shadow-2xl hover:scale-[102%] hover:duration-300 hover:ease-in-out px-6 text-white inline-flex items-center"
                             >
                                 Nos travaux
                                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

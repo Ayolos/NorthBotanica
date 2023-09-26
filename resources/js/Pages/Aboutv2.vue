@@ -153,22 +153,22 @@ const handleScrollAbout =  (elem) => {
             ease:'none',
             scrollTrigger: {
                 trigger: elem,
-                scrub: 0,
                 start: "center center",
-                end: "+=1000",
+                end: "+=500",
                 pin: true,
+                scrub: 0,
             }
         });
 
-        tl.set('.text-animate-about', {x:-50, y:0, opacity:0})
+        tl.set('.text-animate-about', {x:-30, y:-20, opacity:0})
         tl.to('.text-animate-about', {
-            y:-50,
+            y:0,
             x: 0,
             opacity: 1,
             duration: 0.5,
         },  '<')
 
-        gsap.set('.icon-about', {x: "-=500", y: "+=200", opacity: 0})
+        gsap.set('.icon-about', {x: "-=10", y: "+=10", opacity: 0})
         tl.to('.icon-about', {
             ease: 'none',
             x: 0,
@@ -176,7 +176,7 @@ const handleScrollAbout =  (elem) => {
             opacity: 1,
         }, '<');
 
-        gsap.set('.text-about', {x: "0", y: "-=100", opacity: 0})
+        gsap.set('.text-about', {x: "0", y: "-=10", opacity: 0})
         tl.to('.text-about', {
             ease: 'none',
             x: 0,
@@ -252,23 +252,27 @@ const opacity = ref(0)
                         class="w-full bg-center icon bg-fixed overflow-x-hidden" />
                 </div>
             </section>
-            <section class="h-full w-full mt-20 gap-10 container-about flex flex-col">
-                <h2 class="md:text-5xl text-3xl font-bold text-animate-about pl-8 md:pl-20 w-max">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}</h2>
-                <div class="flex flex-row gap-20 lg:justify-center w-full lg:pb-24 px-8 md:px-20">
+            <section class="md:h-[70vh] h-full w-full mt-20 gap-20 container-about flex flex-col px-8">
+                <h2
+                    class="flex justify-center w-full md:text-5xl text-3xl font-bold text-animate-about text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen">
+                    {{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}
+                </h2>
+                <div class="flex flex-row gap-14 lg:justify-center w-full h-full">
                     <div
                         :style="{ backgroundImage: 'url(' + data?.pageAProposCollection?.items[0].sectionAPropos?.image.url + ')' }"
-                        class="bg-cover hidden lg:block p-10 basis-2/5 h-full icon-about w-full aspect-square bg-center rounded-xl shadow-2xl" />
+                        class="bg-cover hidden lg:block p-10 h-full w-[30vh] icon-about aspect-square bg-center rounded-xl shadow-2xl" />
 
-                    <div class="flex gap-10 h-full basis-full lg:basis-2/5 lg:w-[40vw] flex-col justify-start box-border text-clip text-about rounded-lg aspect-square">
-                        <div class="flex-col flex gap-4 w-full pt-10">
+                    <div class="flex gap-10 h-full lg:w-[60vh] w-full flex-col lg:justify-center box-border text-clip text-about rounded-lg aspect-square">
+                        <div class="flex-col flex gap-4 w-full">
                             <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title1 }}</h4>
-                            <p class="text-md font-normal drop-shadow-xl text-start flex items-center">
+                            <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
                                 {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe1 }}
                             </p>
                         </div>
                         <div class="flex flex-col lg:flex-row gap-10 w-full">
                             <div class="flex-col flex gap-4">
-                                <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title2 }}</h4>
+                                <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title2 }}
+                                </h4>
                                 <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
                                     {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe2 }}
                                 </p>
