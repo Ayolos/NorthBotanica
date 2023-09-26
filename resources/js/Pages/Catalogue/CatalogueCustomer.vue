@@ -82,7 +82,7 @@ const {data, isLoading, error} = useContentfulFetch(query)
                                     {{ data?.pageCatalogueCollection?.items[0].section?.label }}
                                 </div>
                                 <div
-                                    class="text-black drop-shadow-lg py-1 font-mono subpixel-antialiased font-black text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-l from-green-500 via-green-600 to-green-700">
+                                    class="text-black drop-shadow-lg py-1 font-mono subpixel-antialiased font-black text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen">
                                     {{ data?.pageCatalogueCollection?.items[0].section?.title }}
                                 </div>
                             </div>

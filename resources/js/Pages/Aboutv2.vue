@@ -252,20 +252,20 @@ const opacity = ref(0)
                         class="w-full bg-center icon bg-fixed overflow-x-hidden" />
                 </div>
             </section>
-            <section class="md:h-[70vh] h-full w-full mt-20 gap-20 container-about flex flex-col px-8">
+            <section class="lg:h-[70vh] w-full gap-20 container-about flex flex-col px-8 pt-[10vh] lg:pt-0">
                 <h2
                     class="flex justify-center w-full md:text-5xl text-3xl font-bold text-animate-about text-transparent bg-clip-text bg-gradient-to-l from-darkGreen via-darkGreen to-clearGreen">
                     {{ data?.pageAProposCollection?.items[0].sectionAPropos?.title }}
                 </h2>
-                <div class="flex flex-row gap-14 lg:justify-center w-full h-full">
+                <div class="flex flex-row gap-10 lg:justify-center w-full h-full">
                     <div
                         :style="{ backgroundImage: 'url(' + data?.pageAProposCollection?.items[0].sectionAPropos?.image.url + ')' }"
-                        class="bg-cover hidden lg:block p-10 h-full w-[30vh] icon-about aspect-square bg-center rounded-xl shadow-2xl" />
+                        class="bg-cover hidden lg:block h-full w-[30vh] icon-about aspect-square bg-center rounded-xl shadow-2xl box-content" />
 
-                    <div class="flex gap-10 h-full lg:w-[60vh] w-full flex-col lg:justify-center box-border text-clip text-about rounded-lg aspect-square">
+                    <div class="flex gap-10 h-full lg:w-[60vw] w-full flex-col justify-center mx-auto lg:mx-0 box-border text-clip text-about rounded-lg aspect-square">
                         <div class="flex-col flex gap-4 w-full">
                             <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title1 }}</h4>
-                            <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
+                            <p class="text-sm font-normal drop-shadow-xl text-justify flex items-center">
                                 {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe1 }}
                             </p>
                         </div>
@@ -273,13 +273,13 @@ const opacity = ref(0)
                             <div class="flex-col flex gap-4">
                                 <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title2 }}
                                 </h4>
-                                <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
+                                <p class="text-sm font-normal drop-shadow-xl text-justify flex items-center">
                                     {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe2 }}
                                 </p>
                             </div>
                             <div class="flex-col flex gap-4">
                                 <h4 class="font-bold text-lg">{{ data?.pageAProposCollection?.items[0].sectionAPropos?.title3 }}</h4>
-                                <p class="text-md font-normal drop-shadow-xl text-justify flex items-center">
+                                <p class="text-sm font-normal drop-shadow-xl text-justify flex items-center">
                                     {{ data?.pageAProposCollection?.items[0].sectionAPropos?.paragraphe3 }}
                                 </p>
                             </div>
@@ -289,7 +289,7 @@ const opacity = ref(0)
             </section>
             <section class="relative bg-gray-200/50 h-screen flex items-center flex-col justify-center w-full md:mt-48 mt-20 container-team">
                 <div class="w-max mx-auto mb-5">
-                    <h2 class="md:text-4xl text-3xl font-semibold">{{ data?.pageAProposCollection?.items[0].sectionExpert?.title }}</h2>
+                    <h2 class="md:text-5xl text-3xl font-semibold">{{ data?.pageAProposCollection?.items[0].sectionExpert?.title }}</h2>
                 </div>
                 <div
                     v-if="isTransition"
@@ -340,7 +340,7 @@ const opacity = ref(0)
             </section>
             <section class="h-full w-full flex items-center">
                 <div class="w-[80vw] h-full my-48 mx-auto flex flex-col justify-center gap-24">
-                    <h2 class="md:text-5xl text-4xl md:w-1/2 mx-auto text-center font-semibold drop-shadow-md">{{ data?.pageAProposCollection?.items[0].sectionNosValeurs?.title }}</h2>
+                    <h2 class="md:text-5xl text-3xl md:w-1/2 mx-auto text-center font-semibold drop-shadow-md">{{ data?.pageAProposCollection?.items[0].sectionNosValeurs?.title }}</h2>
                     <div
                         class="grid md:grid-cols-2 grid-cols-1 md:text-start text-center grid-rows-2 gap-10 justify-center md:w-[60vw] w-[80vw] mx-auto items-start">
                         <p class=""> {{ data?.pageAProposCollection?.items[0].sectionNosValeurs?.paragraphe1}}</p>
