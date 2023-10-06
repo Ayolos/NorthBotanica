@@ -16,11 +16,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    $metaDescription = "Hello test description";
+    $metaDescription = "Bienvenue sur le site de North Botanica";
 
     return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
         'metaDescription' => $metaDescription,
@@ -49,8 +47,6 @@ Route::get('/services/servicesCollectivity', function () {
 
 Route::get('/about', function () {
     return Inertia::render('Aboutv2', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -58,13 +54,3 @@ Route::get('/about', function () {
 
 Route::post('/contact/send', [MailController::class, 'sendMessageGoogle'])->name('contact.send');
 Route::get('/contact', [MailController::class, 'formMessageGoogle'])->name('contact');
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-});
