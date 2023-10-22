@@ -30,7 +30,6 @@ class GenerateSitemap extends Command
     {
         //
         Sitemap::create()
-
             ->add(Url::create('/home')
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
@@ -60,6 +59,6 @@ class GenerateSitemap extends Command
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
 
-            ->writeToFile('sitemap.xml');
+            ->writeToFile(public_path('sitemap.xml'));
     }
 }
