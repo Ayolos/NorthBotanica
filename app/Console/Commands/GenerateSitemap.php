@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
+use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Console\Command;
-use Spatie\Sitemap\SitemapGenerator;
 
 class GenerateSitemap extends Command
 {
@@ -29,9 +29,9 @@ class GenerateSitemap extends Command
     public function handle()
     {
         //
-        SitemapGenerator::create(Url::class)
-            ->getSitemap()
-            ->add(Url::create('/')
+        Sitemap::create()
+
+            ->add(Url::create('/home')
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
@@ -47,11 +47,19 @@ class GenerateSitemap extends Command
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
+            ->add(Url::create('/services/servicesPro')
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                ->setPriority(0.1))
+            ->add(Url::create('/about')
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                ->setPriority(0.1))
             ->add(Url::create('/contact')
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
 
-        ->writeToFile(public_path('sitemap.xml'));
+            ->writeToFile('sitemap.xml');
     }
 }
