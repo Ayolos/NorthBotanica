@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
-use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Console\Command;
+use Spatie\Sitemap\SitemapGenerator;
 
 class GenerateSitemap extends Command
 {
@@ -28,37 +28,24 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
-        //
-        Sitemap::create()
-            ->add(Url::create('/home')
-                ->setLastModificationDate(Carbon::yesterday())
+        SitemapGenerator::create(Url::class)
+            ->getSitemap()
+            ->add(Url::create('')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
-            ->add(Url::create('/services')
-                ->setLastModificationDate(Carbon::yesterday())
+            ->add(Url::create('services')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
-            ->add(Url::create('/services/servicesCustomer')
-                ->setLastModificationDate(Carbon::yesterday())
+            ->add(Url::create('services/servicesCustomer')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
-            ->add(Url::create('/services/servicesCollectivity')
-                ->setLastModificationDate(Carbon::yesterday())
+            ->add(Url::create('services/servicesCollectivity')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
-            ->add(Url::create('/services/servicesPro')
-                ->setLastModificationDate(Carbon::yesterday())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-                ->setPriority(0.1))
-            ->add(Url::create('/about')
-                ->setLastModificationDate(Carbon::yesterday())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-                ->setPriority(0.1))
-            ->add(Url::create('/contact')
-                ->setLastModificationDate(Carbon::yesterday())
+            ->add(Url::create('contact')
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
 
-            ->writeToFile(public_path('sitemap.xml'));
+        ->writeToFile(public_path('sitemap.xml'));
     }
 }
