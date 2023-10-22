@@ -29,7 +29,7 @@ class GenerateSitemap extends Command
     public function handle()
     {
         //
-        SitemapGenerator::create(config('app.url'))
+        SitemapGenerator::create('https://www.north-botanica.com')
             ->getSitemap()
             ->add(Url::create('/')
                 ->setLastModificationDate(Carbon::yesterday())
