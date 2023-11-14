@@ -23,7 +23,7 @@ class ContactMail extends Mailable
 
     public function build()
     {
-        return $this->from('north.botanica.test@gmail.com')
+        return $this->from('contact@north-botanica.com')
             ->subject('[North Botanica] Message de contact: ' . random_int(0,10000))
             ->view('emails.contact', ['data' => $this->data]);
     }
