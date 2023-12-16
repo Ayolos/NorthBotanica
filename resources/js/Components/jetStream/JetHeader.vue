@@ -1,7 +1,7 @@
 <script setup>
 import { initFlowbite } from 'flowbite'
 import {onMounted} from "vue";
-import logo from "/public/storage/logo.png"
+import logo from "/public/logo.png"
 
 onMounted(() => {
     initFlowbite();
