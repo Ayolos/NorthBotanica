@@ -28,6 +28,12 @@ const query = `{
                 }
                 text
               }
+              card3 {
+                img {
+                  url
+                }
+                text
+              }
             }
           }
     }`;
@@ -85,10 +91,10 @@ onMounted( () => {
                         </template>
                     </jet-card-more>
                     <jet-card-more :href="route('catalogue.collectivity')"
-                                   :url="data?.pageCatalogueHomeCollection?.items[0].card2?.img.url"
+                                   :url="data?.pageCatalogueHomeCollection?.items[0].card3?.img.url"
                     >
                         <template #title>
-                            Pour les collectivité
+                            {{ data?.pageCatalogueHomeCollection?.items[0].card3?.text }}
                         </template>
                     </jet-card-more>
                 </div>
